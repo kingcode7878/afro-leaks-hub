@@ -1,8 +1,56 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-body {
-  background-color: black;
-  color: white;
+@theme {
+  /* This defines your professional AfroLeaks red */
+  --color-accent: #ff3b30;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased selection:bg-red-500/30;
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Professional thin scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-black/70 backdrop-blur-xl border-white/10;
+  }
+
+  .btn-tap {
+    @apply active:scale-95 transition-transform duration-200;
+  }
+}
+
+/* Premium Shimmer for thumbnails */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-move 1.5s infinite;
+}
+
+@keyframes shimmer-move {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
