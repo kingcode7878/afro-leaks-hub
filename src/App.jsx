@@ -32,11 +32,10 @@ export default function App() {
     <div className="min-h-screen bg-black text-white selection:bg-accent/30 font-sans">
       
       {/* 🟢 MAIN CONTENT AREA */}
-      <main className="pb-[90px]">
+      <main className="pb-[90px] relative z-0">
         {activeTab === "home" ? (
           <Home 
             key={`home-${refreshKey.home}`} 
-            // Passing default states if your Home.jsx expects them
             category="Trends" 
             viewMode="category"
           />
@@ -54,7 +53,7 @@ export default function App() {
             onClick={() => handleTabClick("home")}
             style={activeTab === 'home' ? activeBtnStyle : inactiveBtnStyle}
           >
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center pointer-events-none">
               <HomeIcon 
                 size={22} 
                 strokeWidth={activeTab === 'home' ? 2.5 : 2} 
@@ -67,10 +66,10 @@ export default function App() {
           </button>
 
           {/* Center Action Button (Pro Look) */}
-          <div className="relative">
+          <div className="relative flex items-center justify-center w-[64px]">
             <div style={centerButtonBg} />
             <button style={centerButtonStyle}>
-              <span className="mb-0.5">+</span>
+              <span className="mb-0.5 pointer-events-none">+</span>
             </button>
           </div>
 
@@ -79,7 +78,7 @@ export default function App() {
             onClick={() => handleTabClick("profile")}
             style={activeTab === 'profile' ? activeBtnStyle : inactiveBtnStyle}
           >
-            <div className="relative flex flex-col items-center">
+            <div className="relative flex flex-col items-center pointer-events-none">
               <UserIcon 
                 size={22} 
                 strokeWidth={activeTab === 'profile' ? 2.5 : 2} 
@@ -97,7 +96,7 @@ export default function App() {
   );
 }
 
-// 🎨 COMPONENT STYLES (Professional Pass)
+// 🎨 COMPONENT STYLES (Fixed for Clicks)
 
 const navWrapperStyle = {
   position: 'fixed',
@@ -112,7 +111,8 @@ const navWrapperStyle = {
   zIndex: 1000,
   display: 'flex',
   justifyContent: 'center',
-  paddingBottom: 'env(safe-area-inset-bottom)', // Support for modern mobile notches
+  paddingBottom: 'env(safe-area-inset-bottom)',
+  pointerEvents: 'auto', 
 };
 
 const navInnerContainer = {
@@ -122,6 +122,8 @@ const navInnerContainer = {
   justifyContent: 'space-around',
   alignItems: 'center',
   padding: '0 10px',
+  height: '100%',
+  position: 'relative',
 };
 
 const baseBtnStyle = {
@@ -130,11 +132,16 @@ const baseBtnStyle = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'center',
   gap: '6px',
   cursor: 'pointer',
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   outline: 'none',
   flex: 1,
+  height: '100%',
+  position: 'relative',
+  zIndex: 10,
+  pointerEvents: 'auto',
 };
 
 const activeBtnStyle = {
@@ -152,6 +159,7 @@ const labelStyle = {
   fontWeight: '800',
   letterSpacing: '0.05em',
   textTransform: 'uppercase',
+  pointerEvents: 'none',
 };
 
 const activeIndicator = {
@@ -178,18 +186,19 @@ const centerButtonStyle = {
   justifyContent: 'center',
   boxShadow: '0 8px 20px rgba(255, 59, 48, 0.3)',
   cursor: 'pointer',
-  zIndex: 2,
-  position: 'relative',
-  marginTop: '-35px',
+  zIndex: 5,
+  position: 'absolute',
+  top: '-26px', 
+  pointerEvents: 'auto',
 };
 
 const centerButtonBg = {
   position: 'absolute',
-  top: '-41px',
-  left: '-6px',
+  top: '-32px', 
   width: '64px',
   height: '64px',
   backgroundColor: '#000',
   borderRadius: '50%',
   zIndex: 1,
+  pointerEvents: 'none', 
 };
