@@ -2,7 +2,7 @@ export const videoData = [
   {
     id: 1,
     category: "Trends",
-    video_url: "https://vjs.zencdn.net/v/oceans.mp4",
+    video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/trends1/400/700",
     views: "1.2M",
     caption: "Lagos fashion week highlights! 🔥",
@@ -10,7 +10,7 @@ export const videoData = [
   {
     id: 2,
     category: "Knacks",
-    video_url: "https://media.w3.org/2010/05/sintel/trailer.mp4",
+    video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/knacks1/400/700",
     views: "850K",
     caption: "Hidden gems in Osu 🇬🇭",
@@ -18,7 +18,7 @@ export const videoData = [
   {
     id: 3,
     category: "Hotties",
-    video_url: "https://www.w3schools.com/html/mov_bbb.mp4",
+    video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/hotties1/400/700",
     views: "2M",
     caption: "Friday night vibes at the beach 🏖️",
@@ -26,7 +26,7 @@ export const videoData = [
   {
     id: 4,
     category: "Baddies",
-    video_url: "https://www.w3schools.com/html/movie.mp4",
+    video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/baddies1/400/700",
     views: "500K",
     caption: "Exclusive guest list only 🤫",
