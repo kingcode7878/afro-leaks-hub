@@ -10,10 +10,11 @@ export const videoData = [
   {
     id: 2,
     category: "AllAccessFans",
-    video_url: "https://cdn.aceimg.com/3276040af.mp4",
-    thumbnail_url: "https://picsum.photos/seed/knacks1/400/700",
-    views: "850K",
-    caption: "Hidden gems in Osu 🇬🇭",
+    video_url: "https://cdn.aceimg.com/d7542b719.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/5f54d4197.png",
+    views: "1.1K",
+    caption: "🔥",
+    
   },
   {
     id: 3,
