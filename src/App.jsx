@@ -92,21 +92,16 @@ export default function App() {
           </div>
 
           <div className="relative h-full w-full flex items-center justify-center">
-            {/* 🛡️ GLASS SHIELD: Blocks long-press/right-click interactions */}
-            <div 
-              className="absolute inset-0 z-[2001] bg-transparent"
-              onContextMenu={(e) => e.preventDefault()}
-            />
-
             <video 
               autoPlay 
               controls 
               /* 🚫 SECURITY: Disable download menu and picture-in-picture */
               controlsList="nodownload noplaybackrate"
               disablePictureInPicture
+              /* 🚫 PREVENTS RIGHT-CLICK SAVE-AS MENU */
               onContextMenu={(e) => e.preventDefault()}
               src={selectedVideo.video_url} 
-              className="w-full h-full object-contain pointer-events-auto" 
+              className="w-full h-full object-contain relative z-[2001]" 
             />
           </div>
 
