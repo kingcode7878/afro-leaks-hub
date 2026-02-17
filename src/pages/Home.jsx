@@ -5,9 +5,9 @@ import { videoData } from '../videoData';
 import { VideoCard } from '../components/VideoCard';
 
 const tabs = [
-  { id: 'Trends', icon: <TrendingUp size={16}/> },
-  { id: 'Knacks', icon: <Zap size={16}/> },
-  { id: 'Hotties', icon: <Flame size={16}/> },
+  { id: 'Leaks', icon: <TrendingUp size={16}/> },
+  { id: 'AllAccessFans', icon: <Zap size={16}/> },
+  { id: 'BigoLive', icon: <Flame size={16}/> },
   { id: 'Baddies', icon: <Heart size={16}/> }
 ];
 
@@ -16,7 +16,7 @@ export default function Home({ category, setCategory, viewMode, setViewMode, onV
     <div className="relative z-0">
       {/* Header */}
       <header className="p-4 flex justify-between items-center border-b border-zinc-800 sticky top-0 bg-black/80 backdrop-blur-md z-[60]">
-        <h1 className="text-accent font-black tracking-tighter text-xl italic">AFRO LEAKS</h1>
+        <h1 className="text-accent font-black tracking-tighter text-xl italic">Xclusive Premium</h1>
         <div className="flex bg-zinc-900 rounded-lg p-1 relative z-[70]">
           <button 
             onClick={() => setViewMode('dashboard')} 
