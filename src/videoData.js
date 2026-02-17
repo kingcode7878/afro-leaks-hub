@@ -1,7 +1,7 @@
 export const videoData = [
   {
     id: 1,
-    category: "Trends",
+    category: "Leaks",
     video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/trends1/400/700",
     views: "1.2M",
@@ -9,7 +9,7 @@ export const videoData = [
   },
   {
     id: 2,
-    category: "Knacks",
+    category: "AllAccessFans",
     video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/knacks1/400/700",
     views: "850K",
@@ -17,7 +17,7 @@ export const videoData = [
   },
   {
     id: 3,
-    category: "Hotties",
+    category: "BigoLive",
     video_url: "https://cdn.aceimg.com/3276040af.mp4",
     thumbnail_url: "https://picsum.photos/seed/hotties1/400/700",
     views: "2M",
