@@ -2,10 +2,10 @@ export const videoData = [
   {
     id: 1,
     category: "Leaks",
-    video_url: "https://cdn.aceimg.com/3276040af.mp4",
-    thumbnail_url: "https://picsum.photos/seed/trends1/400/700",
-    views: "1.2M",
-    caption: "Lagos fashion week highlights! 🔥",
+    video_url: "https://cdn.aceimg.com/c80eab018.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/5d97d4ae7.png",
+    views: "2.2K",
+    caption: "🔥",
   },
   {
     id: 2,
