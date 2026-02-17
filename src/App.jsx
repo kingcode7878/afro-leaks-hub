@@ -76,7 +76,7 @@ export default function App() {
       {/* FULLSCREEN PLAYER */}
       {selectedVideo && (
         <div className="fixed inset-0 z-[2000] bg-black flex flex-col animate-in fade-in slide-in-from-bottom duration-300">
-          <div className="absolute top-0 left-0 right-0 p-6 flex justify-between z-10 bg-gradient-to-b from-black/80 to-transparent">
+          <div className="absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/80 to-transparent">
             <button 
               onClick={() => setSelectedVideo(null)} 
               className="p-2 bg-white/10 backdrop-blur-md rounded-full"
@@ -90,14 +90,28 @@ export default function App() {
               <X size={28} />
             </button>
           </div>
-          <video 
-            autoPlay 
-            controls 
-            src={selectedVideo.video_url} 
-            className="w-full h-full object-contain" 
-          />
+
+          <div className="relative h-full w-full flex items-center justify-center">
+            {/* 🛡️ GLASS SHIELD: Blocks long-press/right-click interactions */}
+            <div 
+              className="absolute inset-0 z-[2001] bg-transparent"
+              onContextMenu={(e) => e.preventDefault()}
+            />
+
+            <video 
+              autoPlay 
+              controls 
+              /* 🚫 SECURITY: Disable download menu and picture-in-picture */
+              controlsList="nodownload noplaybackrate"
+              disablePictureInPicture
+              onContextMenu={(e) => e.preventDefault()}
+              src={selectedVideo.video_url} 
+              className="w-full h-full object-contain pointer-events-auto" 
+            />
+          </div>
+
           {/* Bottom Info Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none">
+          <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] pointer-events-none">
              <h2 className="text-xl font-black italic uppercase tracking-tighter">
                {selectedVideo.caption}
              </h2>
