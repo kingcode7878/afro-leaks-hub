@@ -5,10 +5,10 @@ import { videoData } from '../videoData';
 import { VideoCard } from '../components/VideoCard';
 
 const tabs = [
-  { id: 'Leaks', icon: <TrendingUp size={16}/> },
-  { id: 'AllAccessFans', icon: <Zap size={16}/> },
-  { id: 'BigoLive', icon: <Flame size={16}/> },
-  { id: 'Baddies', icon: <Heart size={16}/> }
+  { id: 'Leaks', icon: <TrendingUp size={18}/> },
+  { id: 'AllAccessFans', icon: <Zap size={18}/> },
+  { id: 'BigoLive', icon: <Flame size={18}/> },
+  { id: 'Baddies', icon: <Heart size={18}/> }
 ];
 
 export default function Home({ category, setCategory, viewMode, setViewMode, onVideoSelect }) {
@@ -32,20 +32,23 @@ export default function Home({ category, setCategory, viewMode, setViewMode, onV
         </div>
       </header>
 
-      <nav className="flex justify-around border-b border-zinc-800 bg-black sticky top-[61px] z-50 overflow-x-auto no-scrollbar">
+      <nav className="flex justify-between border-b border-zinc-800 bg-black sticky top-[61px] z-50 px-1">
         {tabs.map((tab) => (
           <button 
             key={tab.id} 
             onClick={() => setCategory(tab.id)} 
-            className={`relative py-4 px-4 flex items-center gap-2 text-xs font-bold transition-all z-[55] whitespace-nowrap ${category === tab.id ? 'text-white' : 'text-zinc-500'}`}
+            className={`relative py-3 flex-1 flex flex-col items-center gap-1 text-[10px] font-bold transition-all z-[55] ${category === tab.id ? 'text-white' : 'text-zinc-500'}`}
           >
-            <span className="flex items-center gap-2 pointer-events-none">
-              {tab.icon} {tab.id}
+            <span className="pointer-events-none">
+              {tab.icon}
+            </span>
+            <span className="pointer-events-none whitespace-nowrap scale-[0.9]">
+              {tab.id === 'AllAccessFans' ? 'AllAccess' : tab.id}
             </span>
             {category === tab.id && (
               <motion.div 
                 layoutId="activeTabUnderline" 
-                className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent shadow-[0_0_10px_#ff3b30]" 
+                className="absolute bottom-0 left-1 right-1 h-0.5 bg-accent shadow-[0_0_10px_#ff3b30]" 
               />
             )}
           </button>
