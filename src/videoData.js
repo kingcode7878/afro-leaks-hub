@@ -7,6 +7,8 @@ export const videoData = [
     views: "2.2K",
     caption: "🔥",
   },
+
+
   {
     id: 2,
     category: "AllAccessFans",
@@ -20,8 +22,23 @@ export const videoData = [
 
 
   {
-    id: 6,
+    id: 5,
     category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/22000e1b1.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/c3a97e38e.png",
+    views: "1.8K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+
+  {
+    id: 6,
+    category: "BigoLive",
     video_url: "https://cdn.aceimg.com/1cd1cad94.mp4",
     thumbnail_url: "https://cdn.aceimg.com/7799c2c50.png",
     views: "1.5K",
