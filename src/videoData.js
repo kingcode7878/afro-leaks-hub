@@ -88,10 +88,10 @@ export const videoData = [
   {
     id: 4,
     category: "Baddies",
-    video_url: "https://cdn.aceimg.com/3276040af.mp4",
-    thumbnail_url: "https://picsum.photos/seed/baddies1/400/700",
-    views: "500K",
-    caption: "Exclusive guest list only 🤫",
+    video_url: "https://cdn.aceimg.com/85ecc9cf9.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/3460e7d04.png",
+    views: "10.3K",
+    caption: "DM @alphaxdash2 to join",
   }
 
 
