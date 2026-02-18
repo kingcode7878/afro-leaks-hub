@@ -10,6 +10,22 @@ export const videoData = [
 
 
 
+ {
+    id: 12,
+    category: "Baddies",
+    video_url: "https://cdn.aceimg.com/9058f8866.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/723498130.png",
+    views: "1.87K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
+
+
+
   {
     id: 8,
     category: "Leaks",
