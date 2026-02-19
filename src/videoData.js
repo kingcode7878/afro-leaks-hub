@@ -24,6 +24,19 @@ export const videoData = [
 
 
 
+   {
+    id: 13,
+    category: "Baddies",
+    video_url: "https://cdn.aceimg.com/93566e4ef.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/ff9d79070.png",
+    views: "13.87K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
 
 
   {
@@ -87,6 +100,68 @@ export const videoData = [
     caption: "DM @alphaxdash2 to join",
 
   },
+
+
+
+  {
+    id: 14,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/cc7bcae68.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/beb95976c.png",
+    views: "1.8K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+  
+  {
+    id: 15,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/6d7c2a388.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/367737766.png",
+    views: "3.9K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
