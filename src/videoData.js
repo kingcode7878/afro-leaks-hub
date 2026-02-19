@@ -130,6 +130,90 @@ export const videoData = [
 
 
 
+    {
+    id: 16,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/b147958d7.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/b24355e63.png",
+    views: "4.5K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+    {
+    id: 17,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/d79faad6e.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/f11ff197d.png",
+    views: "7.5K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+    {
+    id: 18,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/84f2ee907.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/3fd162c27.png",
+    views: "79.3K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+    {
+    id: 19,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/c839704d7.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/2cfec8fa0.png",
+    views: "9.7K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+   {
+    id: 20,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/c9a892f74.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/f138c7617.png",
+    views: "2.7K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+    {
+    id: 21,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/8b205c47b.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/13650319f.png",
+    views: "17.7K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+
+
+
+
+
 
 
 
