@@ -42,8 +42,8 @@ export const videoData = [
   {
     id: 8,
     category: "Leaks",
-    video_url: "https://cdn.aceimg.com/31e2a95d2.mp4",
-    thumbnail_url: "https://cdn.aceimg.com/8b66acc60.png",
+    video_url: "https://cdn.aceimg.com/54b4fd3d5.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/bff14638b.png",
     views: "3.2K",
     caption: "DM @alphaxdash2 to join",
   },
@@ -58,6 +58,25 @@ export const videoData = [
     views: "4.2K",
     caption: "DM @alphaxdash2 to join",
   },
+
+
+
+ {
+    id: 24,
+    category: "Leaks",
+    video_url: "https://cdn.aceimg.com/80eb98618.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/3208e308b.png",
+    views: "4.2K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
+
+
+
 
 
 
