@@ -210,6 +210,39 @@ export const videoData = [
 
 
 
+    {
+    id: 22,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/1cb0a18c7.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/345b40914.png",
+    views: "9.33K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+  
+
+    {
+    id: 23,
+    category: "AllAccessFans",
+    video_url: "https://cdn.aceimg.com/9f3ee7a65.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/8785056af.png",
+    views: "9.33K",
+    caption: "DM @alphaxdash2 to join",
+
+  },
+
+
+
+
+
+
+
+
+
 
 
 
