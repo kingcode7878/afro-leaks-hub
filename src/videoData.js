@@ -5,8 +5,42 @@ export const videoData = [
     video_url: "https://cdn.aceimg.com/c80eab018.mp4",
     thumbnail_url: "https://cdn.aceimg.com/5d97d4ae7.png",
     views: "2.2K",
-    caption: "🔥",
+    caption: "DM @alphaxdash2 to join",
   },
+
+
+
+
+  {
+    id: 38,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/2d9f255c6.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/25253d348.png",
+    views: "1.2K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+{
+    id: 39,
+    category: "Baddies",
+    video_url: "https://cdn.aceimg.com/9e1909be3.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/5a4dfa192.png",
+    views: "1.2K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
+
+
+
+
+
 
 
   {
@@ -15,7 +49,7 @@ export const videoData = [
     video_url: "https://cdn.aceimg.com/7bcc13d1a.mp4",
     thumbnail_url: "https://cdn.aceimg.com/0a64f99fb.png",
     views: "1.2K",
-    caption: "🔥",
+    caption: "DM @alphaxdash2 to join",
   },
 
 
@@ -26,9 +60,22 @@ export const videoData = [
     video_url: "https://cdn.aceimg.com/80c7369b1.mp4",
     thumbnail_url: "https://cdn.aceimg.com/c8db5d257.png",
     views: "1.33K",
-    caption: "🔥",
+    caption: "DM @alphaxdash2 to join",
   },
 
+
+
+
+ {
+    id: 37,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/babbe7b37.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/b1aa20a33.png",
+    views: "1.43K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+ 
 
 
 
