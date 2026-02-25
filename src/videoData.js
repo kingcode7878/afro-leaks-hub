@@ -9,6 +9,54 @@ export const videoData = [
   },
 
 
+  {
+    id: 35,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/7bcc13d1a.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/0a64f99fb.png",
+    views: "1.2K",
+    caption: "🔥",
+  },
+
+
+
+{
+    id: 36,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/80c7369b1.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/c8db5d257.png",
+    views: "1.33K",
+    caption: "🔥",
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  {
     id: 12,
