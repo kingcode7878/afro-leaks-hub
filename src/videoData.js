@@ -35,6 +35,18 @@ export const videoData = [
 
 
 
+{
+    id: 40,
+    category: "Baddies",
+    video_url: "https://cdn.aceimg.com/6ae6ab2ae.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/e6f0d22cf.png",
+    views: "1.2K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
 
 
 
