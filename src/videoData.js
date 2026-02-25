@@ -11,6 +11,54 @@ export const videoData = [
 
 
 
+{
+    id: 41,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/91b3b54c5.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/5f3192ae5.png",
+    views: "1.3K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
+
+{
+    id: 42,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/1e7cd5f22.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/560608423.png",
+    views: "1.5K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
+{
+    id: 43,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/345d26f30.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/29e3f1df3.png",
+    views: "1.75K",
+    caption: "DM @alphaxdash2 to join",
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
   {
     id: 38,
     category: "BigoLive",
