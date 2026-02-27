@@ -27,16 +27,16 @@ export default function App() {
     }
   };
 
-  // --- Video Player Component (Static Centering & 3s Caption Hide) ---
+  // --- Video Player Component (Fixed Interaction & Auto-Hide) ---
   const VideoPlayer = ({ video, onClose }) => {
-    const [showCaption, setShowCaption] = useState(true);
+    const [isVisible, setIsVisible] = useState(true);
     const timerRef = useRef(null);
 
     const resetTimer = () => {
-      setShowCaption(true);
+      setIsVisible(true);
       if (timerRef.current) clearTimeout(timerRef.current);
       timerRef.current = setTimeout(() => {
-        setShowCaption(false);
+        setIsVisible(false);
       }, 3000);
     };
 
@@ -48,29 +48,35 @@ export default function App() {
     return (
       <div 
         className="absolute inset-0 z-[2000] bg-black flex flex-col h-full w-full overflow-hidden animate-in fade-in slide-in-from-bottom duration-300"
+        onMouseMove={resetTimer}
         onClick={resetTimer}
         onTouchStart={resetTimer}
       >
-        <div className={`absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/80 to-transparent transition-opacity duration-500 ${showCaption ? 'opacity-100' : 'opacity-0'}`}>
-          <button onClick={onClose} className="p-2 bg-white/10 backdrop-blur-md rounded-full"><ChevronLeft size={28} /></button>
-          <button onClick={onClose} className="p-2 bg-white/10 backdrop-blur-md rounded-full"><X size={28} /></button>
+        {/* Header: Controls (Pointer-events-auto ensures buttons work) */}
+        <div className={`absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/80 to-transparent transition-opacity duration-500 pointer-events-none ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <button onClick={onClose} className="p-2 bg-white/10 backdrop-blur-md rounded-full pointer-events-auto"><ChevronLeft size={28} /></button>
+          <button onClick={onClose} className="p-2 bg-white/10 backdrop-blur-md rounded-full pointer-events-auto"><X size={28} /></button>
         </div>
 
-        <div className="flex-1 flex items-center justify-center bg-black h-full w-full">
+        {/* Video: Centered (Always interactive) */}
+        <div className="flex-1 flex items-center justify-center bg-black h-full w-full relative z-[2001]">
           <video 
             autoPlay controls 
             controlsList="nodownload noplaybackrate" 
             disablePictureInPicture 
             onContextMenu={(e) => e.preventDefault()}
             src={video.video_url} 
-            className="w-full max-h-full object-contain relative z-[2001]" 
+            className="w-full max-h-full object-contain" 
             onPlay={resetTimer}
           />
         </div>
 
-        <div className={`absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] transition-opacity duration-500 ${showCaption ? 'opacity-100' : 'opacity-0'}`}>
-          <h2 className="text-xl font-black italic uppercase tracking-tighter">{video.caption}</h2>
-          <p className="text-xs text-zinc-400 mt-1">{video.views} views</p>
+        {/* Footer: Caption (Pointer-events-none lets you click the video "through" the caption) */}
+        <div className={`absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] transition-opacity duration-500 pointer-events-none ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="pb-10">
+            <h2 className="text-xl font-black italic uppercase tracking-tighter">{video.caption}</h2>
+            <p className="text-xs text-zinc-400 mt-1">{video.views} views</p>
+          </div>
         </div>
       </div>
     );
