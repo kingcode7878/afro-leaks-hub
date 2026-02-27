@@ -27,53 +27,31 @@ export default function App() {
     }
   };
 
-  const isTelegram = !!window.Telegram?.WebApp?.initData;
-
-  // --- Shared Navigation Component ---
-  const Navigation = () => (
-    <nav style={navWrapperStyle}>
-      <div style={navInnerContainer}>
-        <button onClick={() => handleTabClick("home")} style={activeTab === 'home' ? activeBtnStyle : inactiveBtnStyle}>
-          <HomeIcon size={22} strokeWidth={activeTab === 'home' ? 2.5 : 2} /><span style={labelStyle}>Home</span>
-          {activeTab === 'home' && <div style={activeIndicator} />}
-        </button>
-        <div className="relative flex items-center justify-center w-[64px]">
-          <div style={centerButtonBg} /><button style={centerButtonStyle}>+</button>
-        </div>
-        <button onClick={() => handleTabClick("profile")} style={activeTab === 'profile' ? activeBtnStyle : inactiveBtnStyle}>
-          <UserIcon size={22} strokeWidth={activeTab === 'profile' ? 2.5 : 2} /><span style={labelStyle}>Profile</span>
-          {activeTab === 'profile' && <div style={activeIndicator} />}
-        </button>
-      </div>
-    </nav>
-  );
-
-  // --- Video Player Component with 3s Auto-Hide Caption ---
+  // --- Video Player Component (Static Centering & 3s Caption Hide) ---
   const VideoPlayer = ({ video, onClose }) => {
-    const [isVisible, setIsVisible] = useState(true);
+    const [showCaption, setShowCaption] = useState(true);
     const timerRef = useRef(null);
 
-    const startTimer = () => {
-      setIsVisible(true);
+    const resetTimer = () => {
+      setShowCaption(true);
       if (timerRef.current) clearTimeout(timerRef.current);
       timerRef.current = setTimeout(() => {
-        setIsVisible(false);
+        setShowCaption(false);
       }, 3000);
     };
 
     useEffect(() => {
-      startTimer();
+      resetTimer();
       return () => { if (timerRef.current) clearTimeout(timerRef.current); };
     }, []);
 
     return (
       <div 
-        className="absolute inset-0 z-[2000] bg-black flex flex-col h-full w-full overflow-hidden"
-        onMouseMove={startTimer}
-        onClick={startTimer}
-        onTouchStart={startTimer}
+        className="absolute inset-0 z-[2000] bg-black flex flex-col h-full w-full overflow-hidden animate-in fade-in slide-in-from-bottom duration-300"
+        onClick={resetTimer}
+        onTouchStart={resetTimer}
       >
-        <div className={`absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/90 to-transparent transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/80 to-transparent transition-opacity duration-500 ${showCaption ? 'opacity-100' : 'opacity-0'}`}>
           <button onClick={onClose} className="p-2 bg-white/10 backdrop-blur-md rounded-full"><ChevronLeft size={28} /></button>
           <button onClick={onClose} className="p-2 bg-white/10 backdrop-blur-md rounded-full"><X size={28} /></button>
         </div>
@@ -85,54 +63,83 @@ export default function App() {
             disablePictureInPicture 
             onContextMenu={(e) => e.preventDefault()}
             src={video.video_url} 
-            className="w-full max-h-full object-contain" 
-            onPlay={startTimer}
+            className="w-full max-h-full object-contain relative z-[2001]" 
+            onPlay={resetTimer}
           />
         </div>
 
-        <div className={`absolute bottom-0 left-0 right-0 p-8 pb-12 bg-gradient-to-t from-black via-black/90 to-transparent z-[2002] transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <h2 className="text-xl font-black italic uppercase tracking-tighter leading-tight">{video.caption}</h2>
-          <p className="text-xs text-zinc-400 mt-2 font-bold uppercase tracking-widest">{video.views} views</p>
+        <div className={`absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] transition-opacity duration-500 ${showCaption ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className="text-xl font-black italic uppercase tracking-tighter">{video.caption}</h2>
+          <p className="text-xs text-zinc-400 mt-1">{video.views} views</p>
         </div>
       </div>
     );
   };
 
-  // 1. TELEGRAM VIEW BLOCK
+  // --- Shared Navigation UI ---
+  const NavigationUI = () => (
+    <nav style={navWrapperStyle}>
+      <div style={navInnerContainer}>
+        <button onClick={() => handleTabClick("home")} style={activeTab === 'home' ? activeBtnStyle : inactiveBtnStyle}>
+          <div className="relative flex flex-col items-center pointer-events-none">
+            <HomeIcon size={22} strokeWidth={activeTab === 'home' ? 2.5 : 2} />
+            {activeTab === 'home' && <div style={activeIndicator} />}
+          </div>
+          <span style={labelStyle}>Home</span>
+        </button>
+        <div className="relative flex items-center justify-center w-[64px]">
+          <div style={centerButtonBg} /><button style={centerButtonStyle}>+</button>
+        </div>
+        <button onClick={() => handleTabClick("profile")} style={activeTab === 'profile' ? activeBtnStyle : inactiveBtnStyle}>
+          <div className="relative flex flex-col items-center pointer-events-none">
+            <UserIcon size={22} strokeWidth={activeTab === 'profile' ? 2.5 : 2} />
+            {activeTab === 'profile' && <div style={activeIndicator} />}
+          </div>
+          <span style={labelStyle}>Profile</span>
+        </button>
+      </div>
+    </nav>
+  );
+
+  const isTelegram = !!window.Telegram?.WebApp?.initData;
+
+  // 1. TELEGRAM VIEW CODE
   if (isTelegram) {
     return (
-      <div className="min-h-screen bg-black text-white relative overflow-hidden">
-        <main className="h-full pb-[90px] overflow-y-auto">
-          {activeTab === "home" ? <Home category={category} setCategory={setCategory} onVideoSelect={setSelectedVideo} /> : <Profile />}
+      <div className="min-h-screen bg-black text-white selection:bg-accent/30 font-sans relative overflow-hidden">
+        <main className="pb-[90px] h-full overflow-y-auto relative z-0">
+          {activeTab === "home" ? <Home category={category} setCategory={setCategory} viewMode={viewMode} setViewMode={setViewMode} onVideoSelect={setSelectedVideo} /> : <Profile />}
         </main>
-        <Navigation />
+        <NavigationUI />
         {selectedVideo && <VideoPlayer video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
       </div>
     );
   }
 
-  // 2. MOBILE WEB VIEW BLOCK
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  if (isMobile) {
+  // Detect Mobile Web
+  const isMobileWeb = typeof window !== "undefined" && window.innerWidth < 768;
+
+  // 2. MOBILE WEB VIEW CODE
+  if (isMobileWeb) {
     return (
-      <div className="h-screen w-full bg-black text-white relative overflow-hidden">
-        <main className="h-full pb-[90px] overflow-y-auto">
-          {activeTab === "home" ? <Home category={category} setCategory={setCategory} onVideoSelect={setSelectedVideo} /> : <Profile />}
+      <div className="h-screen w-full bg-black text-white selection:bg-accent/30 font-sans relative overflow-hidden">
+        <main className="pb-[90px] h-full overflow-y-auto relative z-0">
+          {activeTab === "home" ? <Home category={category} setCategory={setCategory} viewMode={viewMode} setViewMode={setViewMode} onVideoSelect={setSelectedVideo} /> : <Profile />}
         </main>
-        <Navigation />
+        <NavigationUI />
         {selectedVideo && <VideoPlayer video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
       </div>
     );
   }
 
-  // 3. DESKTOP VIEW BLOCK
+  // 3. DESKTOP VIEW CODE
   return (
     <div className="min-h-screen bg-zinc-950 flex justify-center items-center overflow-hidden">
-      <div className="w-full max-w-[450px] h-[90vh] max-h-[850px] bg-black text-white relative overflow-hidden border-x border-zinc-900/50 rounded-2xl shadow-2xl">
-        <main className="h-full pb-[90px] overflow-y-auto">
-          {activeTab === "home" ? <Home category={category} setCategory={setCategory} onVideoSelect={setSelectedVideo} /> : <Profile />}
+      <div className="w-full max-w-[450px] h-screen bg-black text-white selection:bg-accent/30 font-sans relative overflow-hidden border-x border-zinc-900/50">
+        <main className="pb-[90px] h-full overflow-y-auto relative z-0">
+          {activeTab === "home" ? <Home category={category} setCategory={setCategory} viewMode={viewMode} setViewMode={setViewMode} onVideoSelect={setSelectedVideo} /> : <Profile />}
         </main>
-        <Navigation />
+        <NavigationUI />
         {selectedVideo && <VideoPlayer video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
       </div>
     </div>
@@ -141,11 +148,11 @@ export default function App() {
 
 // Styles
 const navWrapperStyle = { position: 'absolute', bottom: 0, left: 0, right: 0, height: '88px', backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255, 255, 255, 0.08)', zIndex: 1000, display: 'flex', justifyContent: 'center', paddingBottom: 'env(safe-area-inset-bottom)' };
-const navInnerContainer = { width: '100%', maxWidth: '450px', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '100%', position: 'relative' };
-const baseBtnStyle = { background: 'none', border: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '6px', cursor: 'pointer', outline: 'none', flex: 1, color: '#555' };
+const navInnerContainer = { width: '100%', maxWidth: '450px', display: 'flex', justifyContent: 'space-around', alignItems: 'center', padding: '0 10px', height: '100%', position: 'relative' };
+const baseBtnStyle = { background: 'none', border: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '6px', cursor: 'pointer', outline: 'none', flex: 1, height: '100%', position: 'relative', zIndex: 10 };
 const activeBtnStyle = { ...baseBtnStyle, color: '#ff3b30' };
-const inactiveBtnStyle = { ...baseBtnStyle };
-const labelStyle = { fontSize: '10px', fontWeight: '800', textTransform: 'uppercase' };
-const activeIndicator = { position: 'absolute', bottom: '10px', width: '12px', height: '2px', backgroundColor: '#ff3b30' };
-const centerButtonStyle = { width: '52px', height: '52px', backgroundColor: '#ff3b30', borderRadius: '50%', color: 'white', fontSize: '28px', zIndex: 5, position: 'absolute', top: '-26px' };
+const inactiveBtnStyle = { ...baseBtnStyle, color: '#555' };
+const labelStyle = { fontSize: '10px', fontWeight: '800', letterSpacing: '0.05em', textTransform: 'uppercase' };
+const activeIndicator = { position: 'absolute', bottom: '-14px', width: '12px', height: '2px', backgroundColor: '#ff3b30', borderRadius: '2px', boxShadow: '0 0 10px rgba(255, 59, 48, 0.5)' };
+const centerButtonStyle = { width: '52px', height: '52px', backgroundColor: '#ff3b30', borderRadius: '50%', border: 'none', color: 'white', fontSize: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 5, position: 'absolute', top: '-26px', boxShadow: '0 4px 15px rgba(255, 59, 48, 0.3)' };
 const centerButtonBg = { position: 'absolute', top: '-32px', width: '64px', height: '64px', backgroundColor: '#000', borderRadius: '50%', zIndex: 1 };
