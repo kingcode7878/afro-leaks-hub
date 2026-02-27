@@ -5,7 +5,6 @@ import Profile from "./pages/Profile";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("home");
-  /* 🟢 Update: Default category now matches your first tab "Leaks" */
   const [category, setCategory] = useState("Leaks"); 
   const [viewMode, setViewMode] = useState("category"); 
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -29,11 +28,14 @@ export default function App() {
   }, []);
 
   return (
-    /* 🟢 Desktop Wrapper: Centers the app on web, remains full-screen on mobile */
-    <div className="min-h-screen bg-zinc-950 flex justify-center">
-      <div className="w-full max-w-[450px] min-h-screen bg-black text-white selection:bg-accent/30 font-sans relative overflow-hidden border-x border-zinc-900/50">
+    /* OUTER WRAPPER: Centers the app on desktop, provides dark background */
+    <div className="h-screen w-full bg-zinc-950 flex justify-center overflow-hidden">
+      
+      {/* MOBILE CONTAINER: Max width 450px, locked height, no outer scroll */}
+      <div className="w-full max-w-[450px] h-full bg-black text-white selection:bg-accent/30 font-sans relative overflow-hidden border-x border-zinc-900/50">
         
-        <main className="pb-[90px] relative z-0">
+        {/* MAIN CONTENT AREA: Scrollable only inside this section */}
+        <main className="h-full pb-[90px] overflow-y-auto relative z-0">
           {activeTab === "home" ? (
             <Home 
               category={category} 
@@ -75,9 +77,10 @@ export default function App() {
           </div>
         </nav>
 
-        {/* FULLSCREEN PLAYER */}
+        {/* FULLSCREEN PLAYER: Absolute within container, locked height, no scroll */}
         {selectedVideo && (
-          <div className="absolute inset-0 z-[2000] bg-black flex flex-col animate-in fade-in slide-in-from-bottom duration-300 overflow-hidden">
+          <div className="absolute inset-0 z-[2000] bg-black flex flex-col h-full w-full overflow-hidden animate-in fade-in slide-in-from-bottom duration-300">
+            
             {/* Top Bar Controls */}
             <div className="absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/90 to-transparent">
               <button 
@@ -94,8 +97,8 @@ export default function App() {
               </button>
             </div>
 
-            {/* 🟢 CENTERED VIDEO AREA: Fixed vertical alignment */}
-            <div className="flex-1 flex items-center justify-center bg-black">
+            {/* VIDEO AREA: Flex centering prevents 'long black screen' */}
+            <div className="flex-1 flex items-center justify-center bg-black overflow-hidden">
               <video 
                 autoPlay 
                 controls 
