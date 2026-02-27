@@ -29,97 +29,102 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-accent/30 font-sans">
-      
-      <main className="pb-[90px] relative z-0">
-        {activeTab === "home" ? (
-          <Home 
-            category={category} 
-            setCategory={setCategory} 
-            viewMode={viewMode} 
-            setViewMode={setViewMode}
-            onVideoSelect={(video) => setSelectedVideo(video)}
-          />
-        ) : (
-          <Profile />
-        )}
-      </main>
-
-      {/* 🧭 NAVIGATION */}
-      <nav style={navWrapperStyle}>
-        <div style={navInnerContainer}>
-          <button onClick={() => handleTabClick("home")} style={activeTab === 'home' ? activeBtnStyle : inactiveBtnStyle}>
-            <div className="relative flex flex-col items-center pointer-events-none">
-              <HomeIcon size={22} strokeWidth={activeTab === 'home' ? 2.5 : 2} />
-              {activeTab === 'home' && <div style={activeIndicator} />}
-            </div>
-            <span style={labelStyle}>Home</span>
-          </button>
-
-          <div className="relative flex items-center justify-center w-[64px]">
-            <div style={centerButtonBg} />
-            <button style={centerButtonStyle}>
-              <span className="mb-0.5 pointer-events-none">+</span>
-            </button>
-          </div>
-
-          <button onClick={() => handleTabClick("profile")} style={activeTab === 'profile' ? activeBtnStyle : inactiveBtnStyle}>
-            <div className="relative flex flex-col items-center pointer-events-none">
-              <UserIcon size={22} strokeWidth={activeTab === 'profile' ? 2.5 : 2} />
-              {activeTab === 'profile' && <div style={activeIndicator} />}
-            </div>
-            <span style={labelStyle}>Profile</span>
-          </button>
-        </div>
-      </nav>
-
-      {/* FULLSCREEN PLAYER */}
-      {selectedVideo && (
-        <div className="fixed inset-0 z-[2000] bg-black flex flex-col animate-in fade-in slide-in-from-bottom duration-300">
-          <div className="absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/80 to-transparent">
-            <button 
-              onClick={() => setSelectedVideo(null)} 
-              className="p-2 bg-white/10 backdrop-blur-md rounded-full"
-            >
-              <ChevronLeft size={28} />
-            </button>
-            <button 
-              onClick={() => setSelectedVideo(null)} 
-              className="p-2 bg-white/10 backdrop-blur-md rounded-full"
-            >
-              <X size={28} />
-            </button>
-          </div>
-
-          <div className="relative h-full w-full flex items-center justify-center">
-            <video 
-              autoPlay 
-              controls 
-              /* 🚫 SECURITY: Disable download menu and picture-in-picture */
-              controlsList="nodownload noplaybackrate"
-              disablePictureInPicture
-              /* 🚫 PREVENTS RIGHT-CLICK SAVE-AS MENU */
-              onContextMenu={(e) => e.preventDefault()}
-              src={selectedVideo.video_url} 
-              className="w-full h-full object-contain relative z-[2001]" 
+    /* 🟢 Desktop Wrapper: Centers the app on web, remains full-screen on mobile */
+    <div className="min-h-screen bg-zinc-950 flex justify-center">
+      <div className="w-full max-w-[450px] min-h-screen bg-black text-white selection:bg-accent/30 font-sans relative overflow-x-hidden border-x border-zinc-900/50">
+        
+        <main className="pb-[90px] relative z-0">
+          {activeTab === "home" ? (
+            <Home 
+              category={category} 
+              setCategory={setCategory} 
+              viewMode={viewMode} 
+              setViewMode={setViewMode}
+              onVideoSelect={(video) => setSelectedVideo(video)}
             />
-          </div>
+          ) : (
+            <Profile />
+          )}
+        </main>
 
-          {/* Bottom Info Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] pointer-events-none">
-             <h2 className="text-xl font-black italic uppercase tracking-tighter">
-               {selectedVideo.caption}
-             </h2>
-             <p className="text-xs text-zinc-400 mt-1">{selectedVideo.views} views</p>
+        {/* 🧭 NAVIGATION */}
+        <nav style={navWrapperStyle}>
+          <div style={navInnerContainer}>
+            <button onClick={() => handleTabClick("home")} style={activeTab === 'home' ? activeBtnStyle : inactiveBtnStyle}>
+              <div className="relative flex flex-col items-center pointer-events-none">
+                <HomeIcon size={22} strokeWidth={activeTab === 'home' ? 2.5 : 2} />
+                {activeTab === 'home' && <div style={activeIndicator} />}
+              </div>
+              <span style={labelStyle}>Home</span>
+            </button>
+
+            <div className="relative flex items-center justify-center w-[64px]">
+              <div style={centerButtonBg} />
+              <button style={centerButtonStyle}>
+                <span className="mb-0.5 pointer-events-none">+</span>
+              </button>
+            </div>
+
+            <button onClick={() => handleTabClick("profile")} style={activeTab === 'profile' ? activeBtnStyle : inactiveBtnStyle}>
+              <div className="relative flex flex-col items-center pointer-events-none">
+                <UserIcon size={22} strokeWidth={activeTab === 'profile' ? 2.5 : 2} />
+                {activeTab === 'profile' && <div style={activeIndicator} />}
+              </div>
+              <span style={labelStyle}>Profile</span>
+            </button>
           </div>
-        </div>
-      )}
+        </nav>
+
+        {/* FULLSCREEN PLAYER */}
+        {selectedVideo && (
+          /* 🟢 Changed from fixed to absolute so it stays inside the desktop container */
+          <div className="absolute inset-0 z-[2000] bg-black flex flex-col animate-in fade-in slide-in-from-bottom duration-300">
+            <div className="absolute top-0 left-0 right-0 p-6 flex justify-between z-[2002] bg-gradient-to-b from-black/80 to-transparent">
+              <button 
+                onClick={() => setSelectedVideo(null)} 
+                className="p-2 bg-white/10 backdrop-blur-md rounded-full"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button 
+                onClick={() => setSelectedVideo(null)} 
+                className="p-2 bg-white/10 backdrop-blur-md rounded-full"
+              >
+                <X size={28} />
+              </button>
+            </div>
+
+            <div className="relative h-full w-full flex items-center justify-center">
+              <video 
+                autoPlay 
+                controls 
+                /* 🚫 SECURITY: Disable download menu and picture-in-picture */
+                controlsList="nodownload noplaybackrate"
+                disablePictureInPicture
+                /* 🚫 PREVENTS RIGHT-CLICK SAVE-AS MENU */
+                onContextMenu={(e) => e.preventDefault()}
+                src={selectedVideo.video_url} 
+                className="w-full h-full object-contain relative z-[2001]" 
+              />
+            </div>
+
+            {/* Bottom Info Overlay */}
+            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] pointer-events-none">
+               <h2 className="text-xl font-black italic uppercase tracking-tighter">
+                 {selectedVideo.caption}
+               </h2>
+               <p className="text-xs text-zinc-400 mt-1">{selectedVideo.views} views</p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
 // Styles
-const navWrapperStyle = { position: 'fixed', bottom: 0, left: 0, right: 0, height: '88px', backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255, 255, 255, 0.08)', zIndex: 1000, display: 'flex', justifyContent: 'center', paddingBottom: 'env(safe-area-inset-bottom)', pointerEvents: 'auto' };
+/* 🟢 Changed position to absolute so it anchors to the container instead of the whole screen */
+const navWrapperStyle = { position: 'absolute', bottom: 0, left: 0, right: 0, height: '88px', backgroundColor: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255, 255, 255, 0.08)', zIndex: 1000, display: 'flex', justifyContent: 'center', paddingBottom: 'env(safe-area-inset-bottom)', pointerEvents: 'auto' };
 const navInnerContainer = { width: '100%', maxWidth: '450px', display: 'flex', justifyContent: 'space-around', alignItems: 'center', padding: '0 10px', height: '100%', position: 'relative' };
 const baseBtnStyle = { background: 'none', border: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '6px', cursor: 'pointer', outline: 'none', flex: 1, height: '100%', position: 'relative', zIndex: 10 };
 const activeBtnStyle = { ...baseBtnStyle, color: '#ff3b30' };
