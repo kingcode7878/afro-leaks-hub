@@ -9,6 +9,9 @@ export default function App() {
   const [viewMode, setViewMode] = useState("category");
   const [selectedVideo, setSelectedVideo] = useState(null);
 
+  // 🟢 Destination for the caption link
+  const captionLink = "https://omg10.com/4/10607690";
+
   useEffect(() => {
     if (window.Telegram?.WebApp) {
       const tg = window.Telegram.WebApp;
@@ -71,12 +74,12 @@ export default function App() {
           />
         </div>
 
-        {/* Footer: Caption (Pointer-events-none lets you click the video "through" the caption) */}
-        <div className={`absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] transition-opacity duration-500 pointer-events-none ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="pb-10">
+        {/* Footer: Caption (🟢 pointer-events-auto added to allow clicking the link) */}
+        <div className={`absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black via-black/40 to-transparent z-[2002] transition-opacity duration-500 pointer-events-auto ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <a href={captionLink} target="_blank" rel="noopener noreferrer" className="block pb-10 no-underline text-white">
             <h2 className="text-xl font-black italic uppercase tracking-tighter">{video.caption}</h2>
             <p className="text-xs text-zinc-400 mt-1">{video.views} views</p>
-          </div>
+          </a>
         </div>
       </div>
     );
