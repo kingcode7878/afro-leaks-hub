@@ -4,9 +4,85 @@ export const videoData = [
     category: "Baddies",
     video_url: "https://cdn.aceimg.com/c80eab018.mp4",
     thumbnail_url: "https://cdn.aceimg.com/5d97d4ae7.png",
-    views: "2.2K",
-    caption: "DM @alphaxdash2 to join",
+    views: "4.9K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
   },
+
+
+{
+    id: 44,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/b16d26288.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/27a03e02b.png",
+    views: "1.8K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+
+
+{
+    id: 45,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/ffb55079c.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/e78f018ea.png",
+    views: "1.8K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+{
+    id: 46,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/11b011c24.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/b7f0c966c.png",
+    views: "1.99K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+{
+    id: 47,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/297c6de25.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/58a206fb7.png",
+    views: "1.78K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+
+
+{
+    id: 48,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/5938ba33e.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/a9e6af70e.png",
+    views: "1.78K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+
+
+ {
+    id: 49,
+    category: "BigoLive",
+    video_url: "https://cdn.aceimg.com/d528c6748.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/9a59250d2.png",
+    views: "3.78K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+ 
+
+
+
+
+
+
+
 
 
 
