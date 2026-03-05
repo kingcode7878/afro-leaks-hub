@@ -9,6 +9,21 @@ export const videoData = [
   },
 
 
+
+
+{
+    id: 50,
+    category: "Leaks",
+    video_url: "https://cdn.aceimg.com/83b54d00d.mp4",
+    thumbnail_url: "https://cdn.aceimg.com/1a329d679.png",
+    views: "1.8K",
+    caption: "CLICK HERE TO DM @alphaxdash2 to join PREMIUM",
+  },
+
+
+
+
+
 {
     id: 44,
     category: "BigoLive",
