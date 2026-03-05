@@ -10,7 +10,7 @@ export default function App() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   // 🟢 Destination for the caption link
-  const captionLink = "https://omg10.com/4/10607690";
+  const captionLink = "https://t.me/alphaxdash2?text=hello%20i%20want%20to%20join%20premium.%20what%20are%20the%20prices?";
 
   useEffect(() => {
     if (window.Telegram?.WebApp) {
